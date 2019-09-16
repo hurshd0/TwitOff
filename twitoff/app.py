@@ -1,6 +1,6 @@
 """Main application and routing logic for TwitOff."""
 
-from flask import Flask
+from flask import Flask, render_template
 from .models import db
 
 
@@ -11,7 +11,7 @@ def create_app():
     db.init_app(app)
 
     @app.route('/')
-    def index():
-        return 'Welcome to TwitOff!'
+    def home():
+        return render_template('home.html')
 
     return app
