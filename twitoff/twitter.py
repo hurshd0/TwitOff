@@ -50,7 +50,8 @@ def add_or_update_user(username):
             db.session.add(db_tweet)
 
     except Exception as e:
-        print(e)
+        print('Error processing {}: {}'.format(username, e))
+        raise e
     finally:
         db.session.commit()
 

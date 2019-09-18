@@ -40,6 +40,8 @@ def create_app():
     @app.route('/user/<username>', methods=['GET'])
     def user(username=None, message=''):
         username = username or request.values['username']
+        import pdb
+        pdb.set_trace()
         try:
             if request.method == 'POST':
                 add_or_update_user(username)
