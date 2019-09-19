@@ -37,9 +37,7 @@ def create_app():
         return render_template("predictions.html", title='Predictions', users=users)
 
     @app.route('/user', methods=['POST'])
-    def add_user():
-        error_message = None
-        success_message = None
+    def add_user(error_message=None, success_message=None):
         try:
             username = request.form.get('username')
             users = User.query.all()
@@ -65,7 +63,7 @@ def create_app():
         return render_template('user.html', title=username, tweets=tweets)
 
     @app.route('/compare', methods=['POST'])
-    def compare(message=''):
+    def compare(message=None):
         users = User.query.all()
         user1, user2 = sorted([request.values['user1'],
                                request.values['user2']])
