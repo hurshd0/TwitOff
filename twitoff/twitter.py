@@ -4,10 +4,8 @@ from decouple import config
 from .models import db, Tweet, User
 
 # https://greatlist.com/happiness/must-follow-twitter-accounts
-TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGO',
-                 'alyankovic', 'nasa', 'sadserver', 'jkhowland', 'austen',
-                 'common_squirrel', 'KenJennings', 'connanobrien',
-                 'big_ben_clock', 'IAM_SHAKESPEARE']
+TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen',
+                 'common_squirrel', 'big_ben_clock', 'IAM_SHAKESPEARE']
 
 TWITTER_AUTH = tweepy.OAuthHandler(
     config('TWITTER_CONSUMER_KEY'), config('TWITTER_CONSUMER_SECRET_KEY'))
@@ -52,14 +50,15 @@ def add_or_update_user(username):
     except Exception as e:
         print('Error processing {}: {}'.format(username, e))
         raise e
-    finally:
+    else:
+        # If no errors happend than commit the records
         db.session.commit()
 
 
 def update_all_users():
     """Update all Tweets for all Users in the User table."""
     for user in User.query.all():
-        add_or_update_user(user.name)
+        add_or_update_user(user.handle)
 
 
 def add_users(users):

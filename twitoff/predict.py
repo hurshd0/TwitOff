@@ -1,13 +1,15 @@
+"""Prediction of users based on Tweet embeddings."""
+
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from .models import User
 from .twitter import BASILICA
 
 
-def predict_user(user1_name, user2_name, tweet_text):
-
-    user1 = User.query.filter(User.name == user1_name).one()
-    user2 = User.query.filter(User.name == user2_name).one()
+def predict_user(user1_name, user2_name, tweet_text, cache=None):
+    """Determine and return which user is more likely to say a given Tweet."""
+    user1 = User.query.filter(User.handle == user1_name).one()
+    user2 = User.query.filter(User.handle == user2_name).one()
     user1_embeddings = np.array([tweet.embedding for tweet in user1.tweets])
     user2_embeddings = np.array([tweet.embedding for tweet in user2.tweets])
     user1_labels = np.ones(len(user1.tweets))
@@ -18,10 +20,3 @@ def predict_user(user1_name, user2_name, tweet_text):
     log_reg.fit(embeddings, labels)
     tweet_embedding = BASILICA.embed_sentence(tweet_text, model='twitter')
     return log_reg.predict_proba(np.array([tweet_embedding]))[:, 1]
-
-
-def main():
-
-
-if __name__ == "__main__":
-    main()

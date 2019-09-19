@@ -1,103 +1,17 @@
 {% extends 'layout.html' %}
-
-{% block head %}
-{% if title %}
-<title>TwitOff - {{ title }}</title>
-{% else %}
-<title>TwitOff</title>
-{% endif %}
-
-<header>
-    <!-- Navbar-->
-    <div class="sticky-navbar">
-        <!-- Sticky Responsive Navbar -->
-        <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <!-- Brand logo-->
-            <a href="/" class="navbar-brand">
-                <img src="/static/img/logo.png" width=45 height=45 lass="d-inline-block align-top" alt="" />
-                TwitOff
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Expanded Menu-->
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-
-                <!-- About App section -->
-                <ul class="nav navbar-nav navbar-left">
-                    <li class="nav-item">
-                        <a href="/about" class="nav-link">About</a>
-                    </li>
-                </ul>
-
-                <!-- Toggle Settings to Update db-->
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                            <i class="fa fa-cog fa-2x"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="/update"><i class="fa fa-refresh" aria-hidden="true"></i>
-                                Update Database 😎</a>
-                            <!--TODO: Disable reset when deploying to heroku-->
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/reset"><i class="fa fa-trash" aria-hidden="true"></i>
-                                Reset
-                                Database ☠️</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
-{% endblock %}
-
-
 {% block body %}
 <div class="row-fluid">
-    {% block content %}
-    <div class="col-auto">
-        <!-- List all Users Added -->
-        <h3>Users</h3>
-        {% if users %}
-        <div class="list-group">
-            {% for user in users %}
-            <a href="/user/{{ user.handle }}"
-                class="list-group-item list-group-item-action list-group-item-primary">{{ user.handle }}</a>
-            {% endfor %}
-        </div>
-        {% else %}
-        <div class="alert alert-warning" role="alert">
-            No Users in database yet! 😟
-        </div>
-        {% endif %}
-
-        <!-- Add twitter handle form-->
-        <form action="/user" method="post">
-            <div class="form-row">
-                <div class="col-auto my-1">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
-                        </div>
-                        <input name="username" type="text" placeholder="Twitter Handle e.g. elonmusk">
-                    </div>
-                </div>
-                <div class="col-auto my-1">
-                    <button type="submit" class="btn btn-primary">Add User</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="col-auto">
-        <p>hi</p>
-    </div>
-    {% endblock %}
+    <h3>Get your tweet on!!!</h3>
+    <p>
+        Ever wondered who is more likely to say that tweet ??? Or, that sounds like what <a
+            href="https://twitter.com/elonmusk">@elonmusk</a>😎 would say ?
+    </p>
+    <p>
+        Why not try out <b>TwitOff</b>???
+        <br>
+        Compare your <em>tweets vs. your favorite celebrity</em> and see how close your thoughts are compared to theirs
+        ?
+    </p>
+    <a class="btn btn-info" href="/predictions" role="button">Try now! 🗪</a>
 </div>
-
-
-
-
 {% endblock %}
