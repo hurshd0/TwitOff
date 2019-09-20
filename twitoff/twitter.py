@@ -22,7 +22,7 @@ def add_or_update_user(username):
         twitter_user = TWITTER.get_user(username)  # Fetch twitter user handle
         # Create SQLAlchemy User db instance
         db_user = (User.query.get(twitter_user.id) or
-                   User(id=twitter_user.id, handle=username, followers_count=twitter_user.followers_count, following_count=twitter_user.friends_count))
+                   User(id=twitter_user.id, handle=username, profile_image_url=twitter_user.profile_image_url_https, followers_count=twitter_user.followers_count, following_count=twitter_user.friends_count))
 
         # Add user to database
         db.session.add(db_user)

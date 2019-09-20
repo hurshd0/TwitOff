@@ -50,20 +50,17 @@
 
                 <!-- Expanded Menu-->
                 <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <!-- Toggle Settings to Update db-->
+
                     <ul class="nav navbar-nav ml-auto">
                         <!-- Home Page Nav -->
                         <li class="nav-item">
                             <a href="/" class="nav-link">Home</a>
                         </li>
-                        <!-- Insights Page Nav -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Insights</a>
-                        </li>
                         <!-- Predictions Page Nav-->
                         <li class="nav-item">
                             <a href="/predictions" class="nav-link">Predictions</a>
                         </li>
+                        <!-- Toggle Settings to Update db-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                 <i class="fa fa-cog fa-2x"></i>
@@ -73,7 +70,7 @@
                                     Update Database 😎</a>
                                 <!--TODO: Disable reset when deploying to heroku-->
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i>
+                                <a class="dropdown-item" href="/reset"><i class="fa fa-trash" aria-hidden="true"></i>
                                     Reset
                                     Database ☠️</a>
                             </div>
