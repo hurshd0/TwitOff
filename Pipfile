@@ -51,6 +51,7 @@ pyOpenSSL = "==19.0.0"
 PySocks = "==1.7.0"
 SQLAlchemy = "==1.3.8"
 Werkzeug = "==0.15.5"
+flask-migrate = "*"
 
 [dev-packages]
 autopep8 = "*"
