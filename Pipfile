@@ -54,8 +54,9 @@ Werkzeug = "==0.15.5"
 flask-migrate = "*"
 
 [dev-packages]
-autopep8 = "*"
 pylint = "*"
+black = "*"
+pylint-flask = "*"
 
 [requires]
 python_version = "3.7"
