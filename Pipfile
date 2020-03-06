@@ -55,8 +55,9 @@ flask-migrate = "*"
 
 [dev-packages]
 pylint = "*"
-black = "*"
 pylint-flask = "*"
+black = "*"
+pylint-flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
