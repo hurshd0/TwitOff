@@ -4,8 +4,8 @@ from decouple import config
 from twitoff.models import db, Tweet, User
 
 # https://greatlist.com/happiness/must-follow-twitter-accounts
-TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen',
-                 'common_squirrel', 'big_ben_clock', 'IAM_SHAKESPEARE']
+TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen'
+                 ]
 
 TWITTER_AUTH = tweepy.OAuthHandler(
     config('TWITTER_CONSUMER_KEY'), config('TWITTER_CONSUMER_SECRET_KEY'))
