@@ -1,7 +1,7 @@
 import tweepy
 import basilica
 from decouple import config
-from .models import db, Tweet, User
+from twitoff.models import db, Tweet, User
 
 # https://greatlist.com/happiness/must-follow-twitter-accounts
 TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen',

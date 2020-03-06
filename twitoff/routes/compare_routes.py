@@ -4,10 +4,10 @@ from twitoff.models import User
 from twitoff.predict import predict_user
 
 
-compare = Blueprint("compare", __name__)
+compare_routes = Blueprint("compare_routes", __name__)
 
 
-@compare.route('/predictions')
+@compare_routes.route('/predictions')
 def get_predictions():
     users = User.query.all()
     if not users:
@@ -15,7 +15,7 @@ def get_predictions():
     return render_template("predictions.html", title='Predictions', users=users)
 
 
-@compare.route('/compare', methods=['POST'])
+@compare_routes.route('/compare', methods=['POST'])
 def compare(compare_message=None, compare_error_message=None):
     users = User.query.all()
     user1, user2 = sorted([request.values['user1'],
