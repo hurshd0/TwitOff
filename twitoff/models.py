@@ -10,6 +10,7 @@ migrate = Migrate()
 class User(db.Model):
     """Twitter users that we pull and analyze Tweets for."""
     id = db.Column(db.BigInteger, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
     handle = db.Column(db.String(15), unique=True, nullable=False)
     profile_image_url = db.Column(db.Text)
     followers_count = db.Column(db.BigInteger)
