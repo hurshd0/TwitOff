@@ -61,25 +61,28 @@
 <body>
     {% block body %}{% endblock %}
     <!-- footer -->
-    <footer>
+    <footer class="text-muted">
+        <div class="footer-holder d-flex justify-content-between
+        ">
+            <div class='footer-logo'>
+                <!-- Brand logo-->
+                <a href="/" class="navbar-brand">
+                    <img src="/static/img/logo.png" width=45 height=45 lass="d-inline-block align-top" alt="" />
+                </a>
+            </div>
+            <div class='footer-links'>
+                <h3>Follow</h3>
+                <p class='lead'>
+                    <span class='mr-2'><a href="mailto:hurshd0@gmail.com"><i class="fa fa-envelope-square"
+                                aria-hidden="true"></i></a><a href="https://github.com/hurshd0/TwitOff"><i
+                                class="fa fa-github-square" aria-hidden="true"></i></a><a
+                            href="https://twitter.com/hurshd0"><i class="fa fa-twitter-square" aria-hidden="true"></i>
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </div>
 
-        <div class="col">
-            <!-- Brand logo-->
-            <a href="/" class="navbar-brand">
-                <img src="/static/img/logo.png" width=45 height=45 lass="d-inline-block align-top" alt="" />
-            </a>
-        </div>
-        <div class='col'>
-            <hr>
-            <p class='lead'>
-                <span class='mr-2'><a href="mailto:hurshd0@gmail.com"><i class="fa fa-envelope-square"
-                            aria-hidden="true"></i></a><a href="https://github.com/hurshd0/TwitOff"><i
-                            class="fa fa-github-square" aria-hidden="true"></i></a><a
-                        href="https://twitter.com/hurshd0"><i class="fa fa-twitter-square" aria-hidden="true"></i>
-                    </a>
-                </span>
-            </p>
-        </div>
     </footer>
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

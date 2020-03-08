@@ -71,3 +71,13 @@
 .card-info:last-child {
     margin-top: 10px;
 }
+
+footer {
+    background-color: #1b212c;
+
+}
+
+.footer-holder {
+    padding: 2.25rem 1.25rem;
+
+}
