@@ -56,7 +56,7 @@ $(document).ready(() => {
                     setTimeout(() => compare_result.html(''), 2.5 * 1000);
                 },
                 error: function () {
-
+                    return
                 }
             });
         }
@@ -79,7 +79,7 @@ $(document).ready(() => {
         console.log(post_data);
         let user_results = $(".my-2");
         $.ajax({
-            url: "http://localhost:5000/user",
+            url: "/user",
             type: "post",
             data: post_data,
             success: function (results) {
@@ -115,7 +115,7 @@ $(document).ready(() => {
 
             },
             error: function () {
-
+                return
             }
 
 
@@ -123,7 +123,24 @@ $(document).ready(() => {
 
     });
 
-    $('.user-card-del-btn').click(function (event) {
+    $('.user-card').click(function (event) {
+        let user_card = event.target.textContent;
+        if (user_card.toLowerCase() === "delete me") {
+            $.ajax({
+                url: `/delete/${event.currentTarget.id}`,
+                type: "delete",
+                success: function (results) {
+                    if (results.success === true) {
+                        console.log(results)
+                        $(`#${event.currentTarget.id}`).remove();
+                        window.location.reload(true);
+                    }
+                },
+                error: function (results) {
+                    return
+                }
+            });
+        }
 
     });
 
