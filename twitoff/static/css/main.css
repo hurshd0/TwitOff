@@ -34,6 +34,11 @@
     margin-bottom: 31px;
 }
 
+.user-card:hover {
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+    transform: translateY(-1px);
+}
+
 .user-card-top {
     /* border: 2px solid orange; */
     height: 70px;
