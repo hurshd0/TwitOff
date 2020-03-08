@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify
 from twitoff.twitter import add_or_update_user, update_all_users, add_users, TWITTER_USERS
 from twitoff.models import db, User, Tweet
 
@@ -31,22 +31,23 @@ def add_user(message=None):
 
 @user_routes.route('/user/<username>', methods=['GET'])
 def get_user_info(username=None):
-    tweets = User.query.filter(User.handle == username).one().tweets
-    return render_template('user.html', title=username, tweets=tweets)
+    try:
+        tweets = User.query.filter(User.handle == username).one().tweets
+        success = True
+        message = f"Successfully fetched Tweets for {username}"
+    except Exception as e:
+        tweets = []
+        success = False
+        message = "Error getting tweets for {}: {}".format(username, e)
+        print(f'[DEBUG] {message}')
+    return jsonify({"success": success, "message": message, "data": tweets})
 
 
 @user_routes.route('/update')
 def update():
-    update_all_users()
     users = User.query.all()
-    return render_template('index.html', title='Update all users!', users=users)
-
-
-@user_routes.route('/reset')
-def reset():
-    db.drop_all()
-    db.create_all()
-    return render_template('index.html', title='Reset - Database!', users=[])
+    update_all_users()
+    return jsonify({"success":True, "message": "Upated all user tweets."})
 
 
 @user_routes.route('/delete/<username>', methods=['DELETE'])
@@ -57,7 +58,7 @@ def delete_user(username):
         db.session.commit()
         success = True
         message = f'{user } has been sucessfully deleted.'
-        print(message)
+        print(f"[DEBUG] {message}")
     except Exception as e:
         success = False
         message = "User not found."
