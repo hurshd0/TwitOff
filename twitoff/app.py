@@ -11,8 +11,6 @@ def create_app():
     """Create and configure and instance of flask application."""
     app = Flask(__name__)
 
-    print(config('DATABASE_URL'))
-
     # Configures DB
     app.config['SQLALCHEMY_DATABASE_URI'] = config('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
