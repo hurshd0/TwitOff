@@ -13,15 +13,21 @@ def add_user(message=None):
         users = User.query.all()
         user_handle_list = [user.handle for user in users]
         if username in user_handle_list:
+            add_or_update_user(username)
             message = f'User {username} already added, updating user tweets!'
-            add_or_update_user(username)
             print(f'[DEBUG] {message}')
+            success = True
         else:
-            add_or_update_user(username)
-            message = "User {} successfully added!".format(
-                username)
-            print(f'[DEBUG] {message}')
-        success = True
+            try:
+                add_or_update_user(username)
+                message = "User {} successfully added!".format(
+                    username)
+                print(f'[DEBUG] {message}')
+                success = True
+            except Exception as e:
+                message = "Error adding {}: {}".format(username, e)
+                print(f'[DEBUG] {message}')
+                success = False
     except Exception as e:
         message = "Error adding {}: {}".format(username, e)
         print(f'[DEBUG] {message}')
@@ -32,7 +38,8 @@ def add_user(message=None):
 @user_routes.route('/user/<username>', methods=['GET'])
 def get_user_info(username=None):
     try:
-        tweets = User.query.filter(User.handle == username).one().tweets
+        tweets = [tweet.text for tweet in User.query.filter(
+            User.handle == username).one().tweets]
         success = True
         message = f"Successfully fetched Tweets for {username}"
     except Exception as e:
@@ -47,7 +54,7 @@ def get_user_info(username=None):
 def update():
     users = User.query.all()
     update_all_users()
-    return jsonify({"success":True, "message": "Upated all user tweets."})
+    return jsonify({"success": True, "message": "Upated all user tweets."})
 
 
 @user_routes.route('/delete/<username>', methods=['DELETE'])
