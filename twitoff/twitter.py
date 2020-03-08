@@ -1,11 +1,11 @@
 import tweepy
 import basilica
 from decouple import config
-from .models import db, Tweet, User
+from twitoff.models import db, Tweet, User
 
 # https://greatlist.com/happiness/must-follow-twitter-accounts
-TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen',
-                 'common_squirrel', 'big_ben_clock', 'IAM_SHAKESPEARE']
+TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'austen'
+                 ]
 
 TWITTER_AUTH = tweepy.OAuthHandler(
     config('TWITTER_CONSUMER_KEY'), config('TWITTER_CONSUMER_SECRET_KEY'))
@@ -22,7 +22,7 @@ def add_or_update_user(username):
         twitter_user = TWITTER.get_user(username)  # Fetch twitter user handle
         # Create SQLAlchemy User db instance
         db_user = (User.query.get(twitter_user.id) or
-                   User(id=twitter_user.id, handle=username, profile_image_url=twitter_user.profile_image_url_https, followers_count=twitter_user.followers_count, following_count=twitter_user.friends_count))
+                   User(id=twitter_user.id, handle=username, name=twitter_user.name, profile_image_url=twitter_user.profile_image_url_https, followers_count=twitter_user.followers_count, following_count=twitter_user.friends_count))
 
         # Add user to database
         db.session.add(db_user)
@@ -71,6 +71,7 @@ def debug_twitter_json(username):
     """Use it debug user's data"""
     user_info = {}
     twitter_user = TWITTER.get_user(username)
+    user_info['user_fullname'] = twitter_user.name
     user_info['user_name'] = twitter_user.screen_name
     user_info['user_id'] = twitter_user.id
     user_info['profile_image'] = twitter_user.profile_image_url_https
@@ -79,3 +80,8 @@ def debug_twitter_json(username):
     user_info['raw_tweets'] = twitter_user.timeline(
         count=200, exclude_replies=True, include_rts=False, tweet_mode='extended')
     return user_info
+
+
+if __name__ == "__main__":
+    user_info = debug_twitter_json("AceMouty")
+    print(user_info)

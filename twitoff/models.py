@@ -1,14 +1,16 @@
 """SQLAlchemy models for TwitOff."""
 
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
+migrate = Migrate()
 
 
 class User(db.Model):
     """Twitter users that we pull and analyze Tweets for."""
     id = db.Column(db.BigInteger, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
     handle = db.Column(db.String(15), unique=True, nullable=False)
     profile_image_url = db.Column(db.Text)
     followers_count = db.Column(db.BigInteger)
@@ -26,7 +28,8 @@ class Tweet(db.Model):
     embedding = db.Column(db.PickleType, nullable=False)
     user_id = db.Column(db.BigInteger, db.ForeignKey(
         'user.id'), nullable=False)
-    user = db.relationship('User', backref=db.backref('tweets', lazy=True))
+    user = db.relationship('User',
+                           backref=db.backref('tweets', cascade="all,delete", lazy=True))
 
     def __repr__(self):
         return '<Tweet %r>' % self.text
