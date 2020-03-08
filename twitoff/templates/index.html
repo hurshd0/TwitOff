@@ -118,7 +118,7 @@
         {% if users %}
         <!-- List all Users Added -->
         {% for user in users %}
-        <div class="user-card">
+        <div class="user-card" id="{{ user.handle }}">
             <div class="user-card-top d-flex justify-content-between">
                 <div class="user-img-container">
                     <img src="{{ user.profile_image_url }}" alt="" class="user-img">
@@ -132,7 +132,7 @@
                 <p class="text-muted card-info">{{ user.handle }}</p>
                 <p class="text-muted card-info"><span class="user-stats">{{ '%04d' % user.following_count }}</span>
                     Following
-                    <span class="user-stats">{{ '%04d' % user.followers_count }}</span> Followers</p>
+                    <span class="user-stats">{{ user.followers_count }}</span> Followers</p>
             </div>
         </div>
         {% endfor %}
