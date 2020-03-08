@@ -2,8 +2,10 @@
 
 {% block body %}
 
+<!-- Comapre twitter users-->
 <section class="twitoff-section">
     <div class="row">
+        <!-- Twitoff summary -->
         <div class="col">
             <div class="jumbotron">
                 <h1 class="display-4">TwitOff 🗪</h1>
@@ -19,10 +21,9 @@
                     logistic
                     regression determines
                     the most likely author.</p>
-
-
             </div>
         </div>
+        <!-- Twitoff compare users form -->
         <div class="col">
             <div>
                 <h3 class="form-header">Compare Users</h3>
@@ -56,156 +57,90 @@
                     </div>
 
                 </form>
-            </div>
-            <div class="row compare-result">
+                <div class="compare-result">
 
 
+                </div>
             </div>
+
         </div>
     </div>
 </section>
+<!-- Twitter Users -->
 <section class="users-section">
     <div class="manage-users-container d-flex justify-content-between">
         <h3 class="h3">Manage Users</h3>
-        <button type="button" class="btn btn-info">Add Users</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Add User</button>
     </div>
+    <!-- Add User Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Add twitter handle form-->
+                <form id="add-user-form" method="post">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="my-1">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">@</div>
+                                        </div>
+                                        <input name="username" type="text" placeholder="Twitter Handle"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="my-2">
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Save User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- User Cards -->
     <div class="user-cards-container d-flex flex-wrap justify-content-center">
+        {% if users %}
+        <!-- List all Users Added -->
+        {% for user in users %}
         <div class="user-card">
             <div class="user-card-top d-flex justify-content-between">
                 <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
+                    <img src="{{ user.profile_image_url }}" alt="" class="user-img">
                 </div>
                 <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
+                    <button type="button" class="btn btn-outline-info btn-sm user-card-del-btn">Delete Me</button>
                 </div>
             </div>
             <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
+                <p class="card-info"><strong>{{ user.name }}</strong></p>
+                <p class="text-muted card-info">{{ user.handle }}</p>
+                <p class="text-muted card-info"><span class="user-stats">{{ '%04d' % user.following_count }}</span>
+                    Following
+                    <span class="user-stats">{{ '%04d' % user.followers_count }}</span> Followers</p>
             </div>
         </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
+        {% endfor %}
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            No Users in database yet! 😟
         </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
-        <div class="user-card">
-            <div class="user-card-top d-flex justify-content-between">
-                <div class="user-img-container">
-                    <img src="https://pbs.twimg.com/profile_images/542459287868436480/mnyvxk3o_normal.jpeg" alt=""
-                        class="user-img">
-                </div>
-                <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm">Delete Me</button>
-                </div>
-            </div>
-            <div class="user-card-bottom">
-                <p class="card-info"><strong>Austen Allred</strong></p>
-                <p class="text-muted card-info">@austen</p>
-                <p class="text-muted card-info"><span class="user-stats">832</span> Following <span
-                        class="user-stats">120.9K</span> Followers</p>
-            </div>
-        </div>
+        {% endif %}
     </div>
     </div>
 </section>
