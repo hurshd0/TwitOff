@@ -86,11 +86,10 @@
                 <!-- Add twitter handle form-->
                 <form id="add-user-form" method="post">
                     <div class="modal-body">
-
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="my-1">
-                                    <div class="input-group">
+                                    <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">@</div>
                                         </div>
@@ -98,16 +97,19 @@
                                             class="form-control" required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="my-2">
 
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-info">Save User</button>
+                        <button type="submit" class="btn btn-info btn-sav-usr">Save User
+                            <i class="loading-icon fa fa-spinner fa-spin d-none"></i>
+                        </button>
                     </div>
                 </form>
             </div>

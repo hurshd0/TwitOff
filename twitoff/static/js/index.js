@@ -16,8 +16,6 @@ $(document).ready(() => {
         let compare_result = $(".compare-result");
         let msg = '';
 
-        console.log(error_msg);
-
         if (user1 === null || user2 === null) {
             error_msg +=
                 `
@@ -46,7 +44,6 @@ $(document).ready(() => {
                 type: request_method,
                 data: post_data,
                 success: function (results) {
-                    console.log(results);
                     msg += `
                     <div class="alert alert-info text-center" role="alert">
                     <p>${results.message}</p>
@@ -72,19 +69,20 @@ $(document).ready(() => {
         if (username[0] === "@") {
             username = username.slice(1);
         }
-        console.log(username);
         let post_data = JSON.stringify({
             "username": username
         })
-        console.log(post_data);
         let user_results = $(".my-2");
+        $(".loading-icon").toggleClass("d-none");
+        $(".btn-sav-usr").attr("disabled", true);
         $.ajax({
             url: "/user",
             type: "post",
             data: post_data,
             success: function (results) {
-                console.log(results);
                 if (results.success !== true) {
+                    $(".btn-sav-usr").removeAttr("disabled");
+                    $(".loading-icon").toggleClass("d-none");
                     let msg = `
                     <div class="alert alert-warning text-center" role="alert">
                     <p>${results.message}</p>
@@ -98,6 +96,7 @@ $(document).ready(() => {
                     );
                     return
                 }
+                $(".loading-icon").toggleClass("d-none");
                 let msg = `
                 <div class="alert alert-success text-center" role="alert">
                 <p>${results.message}</p>
@@ -131,7 +130,6 @@ $(document).ready(() => {
                 type: "delete",
                 success: function (results) {
                     if (results.success === true) {
-                        console.log(results)
                         $(`#${event.currentTarget.id}`).remove();
                         window.location.reload(true);
                     }
