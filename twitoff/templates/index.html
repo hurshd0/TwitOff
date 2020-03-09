@@ -54,7 +54,8 @@
                     </div>
                 </form>
                 <div class="form-actions text-center">
-                    <button id="compare_form-button" class="btn btn-info mb-2 comp-btn" type="submit">Compare Users</button>
+                    <button id="compare_form-button" class="btn btn-info mb-2 comp-btn" type="submit">Compare
+                        Users</button>
                 </div>
                 <div class="compare-result">
 
@@ -69,10 +70,10 @@
 <section class="users-section">
     <div class="manage-users-container d-flex justify-content-between">
         <h3 class="h3">Manage Users</h3>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Add User</button>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUserModal">Add User</button>
     </div>
     <!-- Add User Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -125,7 +126,9 @@
                     <img src="{{ user.profile_image_url }}" alt="" class="user-img">
                 </div>
                 <div class="user-btn-container">
-                    <button type="button" class="btn btn-outline-info btn-sm user-card-del-btn">Delete Me</button>
+                    <button type="button" class="btn btn-outline-info btn-sm user-card-modal-btn" data-toggle="modal"
+                        data-target="#my{{ user.id }}">View Tweets</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm user-card-del-btn">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
             <div class="user-card-bottom">
@@ -136,13 +139,60 @@
                     <span class="user-stats">{{ user.followers_count }}</span> Followers</p>
             </div>
         </div>
+        <!-- Tweet Modal -->
+        <div class="modal fade" tabindex="-1" id="my{{ user.id }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <div class="modal-head-user">
+                            <div class="modal-user-profile d-flex">
+                                <div class="user-img-container mr-2 mt-2">
+                                    <img src="{{ user.profile_image_url }}" alt="" class="user-img">
+                                </div>
+                                <div>
+                                    <h3 class="modal-title">{{ user.name }}</h3>
+                                    <p class="text-muted">@{{ user.handle }}</p>
+                                </div>  
+                            </div>
+                            
+                            <div id="pill-container" class="text-muted d-flex">
+                                <p><span class="user-stats badge badge-pill badge-dark">{{ '%04d' % user.following_count }}</span> Following</p>
+                                <p><span class="user-stats badge badge-pill badge-dark">{{ user.followers_count }}</span> Followers</p>
+                            </div>
+                        </div>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+
+                    <div class="modal-body">
+                        <div id="user-tweets">
+                            <ul class="list-group">
+                                {% for tweet in user.tweets %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center tweet-text-item">
+                                    {{ tweet.text }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {% endfor %}
+
         {% else %}
         <div class="alert alert-warning" role="alert">
             No Users in database yet! 😟
         </div>
         {% endif %}
-    </div>
     </div>
 </section>
 {% endblock %}
