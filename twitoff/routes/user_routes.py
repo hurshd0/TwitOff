@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, redirect, url_for
 from twitoff.twitter import add_or_update_user, update_all_users, add_users, TWITTER_USERS
 from twitoff.models import db, User, Tweet
 
@@ -54,7 +54,7 @@ def get_user_info(username=None):
 def update():
     users = User.query.all()
     update_all_users()
-    return jsonify({"success": True, "message": "Upated all user tweets."})
+    return redirect(url_for('home_routes.get_home'))
 
 
 @user_routes.route('/delete/<username>', methods=['DELETE'])
