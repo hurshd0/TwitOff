@@ -43,11 +43,9 @@
 }
 
 .user-card-top {
-    /* border: 2px solid orange; */
     height: 70px;
 
 }
-
 
 .user-img {
     border-radius: 50%;
@@ -87,6 +85,9 @@
 #pill-container p:first-child{
     margin-right: 10px;
 }
+
+
+/* Footer */
 
 footer {
     background-color: #1b212c;
