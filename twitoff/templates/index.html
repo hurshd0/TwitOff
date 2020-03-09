@@ -139,18 +139,13 @@
         </div>
         
         {% endfor %}
-        {% else %}
-        <div class="alert alert-warning" role="alert">
-            No Users in database yet! 😟
-        </div>
-        {% endif %}
-         <!-- Tweet Modal -->
-        <div class="modal" id="tweetModal">
+        <!-- Tweet Modal -->
+        <div class="modal fade" id="tweetModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h1 class="modal-title">Modal Heading</h1>
+                      <h1 class="modal-title"></h1>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     
@@ -166,6 +161,12 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            No Users in database yet! 😟
+        </div>
+        {% endif %}
+         
     </div>
 </section>
 {% endblock %}
