@@ -1,3 +1,4 @@
+/* Top Section */
 .twitoff-section {
 
     padding: 2rem;
@@ -18,11 +19,13 @@
     transform: translateY(-1px);
 }
 
+/* Users Section */
 .users-section {
 
     padding: 2rem;
 }
 
+/* User Card */
 .user-card {
     /* border: 2px solid red;  */
     width: 282px;
@@ -45,10 +48,6 @@
 
 }
 
-.user-img-container{
-    /* border: 2px solid purple; */
-    /* align-items: center; */
-}
 
 .user-img {
     border-radius: 50%;
@@ -69,7 +68,24 @@
 }
 
 .card-info:last-child {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+/* Tweet Modal */
+
+#pill-container .user-stats{
+    color: white;
+}
+
+#user-tweets .tweet-text-item{
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #289FA3;
+    color: white;
+}
+
+#pill-container p:first-child{
+    margin-right: 10px;
 }
 
 footer {
