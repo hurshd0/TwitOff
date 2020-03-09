@@ -131,8 +131,10 @@ $(document).ready(() => {
         the twitter user from the DB
     */
     $('.user-card').click((e) => {
-        let user_card = e.target.textContent;
-        if (user_card.toLowerCase() === "delete me") {
+        let user_card_txt = e.target.textContent.replace(/\s+/, "").toLowerCase();
+        console.log(user_card_txt);
+        debugger;
+        if (user_card_txt === "delete") {
             $.ajax({
                 url: `/delete/${e.currentTarget.id}`,
                 type: "delete",
