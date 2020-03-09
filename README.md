@@ -5,7 +5,7 @@
 
 ### Deployed App
 
-👉 [TwitOff](https://twitoff-says.herokuapp.com/)
+👉 [TwitOff](http://twitoff.com/)
 
 ### Usage if running local
 
