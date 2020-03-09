@@ -8,7 +8,7 @@
         <!-- Twitoff summary -->
         <div class="col">
             <div class="jumbotron">
-                <h1 class="display-4">TwitOff 🗪</h1>
+                <h1 class="display-4">TwitOff <i class="fa fa-comments"></i></h1>
                 <p class="lead">TwittOff is a machine learning app that predicts the Twitter author of any given text.
                     Choose two twitter users, enter some text, and TwittOff will predict which user is most likely to
                     tweet
@@ -128,13 +128,14 @@
                 <div class="user-btn-container">
                     <button type="button" class="btn btn-outline-info btn-sm user-card-modal-btn" data-toggle="modal"
                         data-target="#my{{ user.id }}">View Tweets</button>
-                    <button type="button" class="btn btn-outline-danger btn-sm user-card-del-btn">Delete <i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm user-card-del-btn">Delete <i
+                            class="fa fa-trash" aria-hidden="true"></i></button>
                 </div>
             </div>
             <div class="user-card-bottom">
                 <p class="card-info"><strong>{{ user.name }}</strong></p>
                 <p class="text-muted card-info">{{ user.handle }}</p>
-                <p class="text-muted card-info"><span class="user-stats">{{ '%04d' % user.following_count }}</span>
+                <p class="text-muted card-info"><span class="user-stats">{{ user.following_count }}</span>
                     Following
                     <span class="user-stats">{{ user.followers_count }}</span> Followers</p>
             </div>
@@ -153,12 +154,16 @@
                                 <div>
                                     <h3 class="modal-title">{{ user.name }}</h3>
                                     <p class="text-muted">@{{ user.handle }}</p>
-                                </div>  
+                                </div>
                             </div>
-                            
+
                             <div id="pill-container" class="text-muted d-flex">
-                                <p><span class="user-stats badge badge-pill badge-dark">{{ '%04d' % user.following_count }}</span> Following</p>
-                                <p><span class="user-stats badge badge-pill badge-dark">{{ user.followers_count }}</span> Followers</p>
+                                <p><span
+                                        class="user-stats badge badge-pill badge-dark">{{ user.following_count }}</span>
+                                    Following</p>
+                                <p><span
+                                        class="user-stats badge badge-pill badge-dark">{{ user.followers_count }}</span>
+                                    Followers</p>
                             </div>
                         </div>
                         <button type="button" class="close" data-dismiss="modal">×</button>
@@ -170,7 +175,8 @@
                         <div id="user-tweets">
                             <ul class="list-group">
                                 {% for tweet in user.tweets %}
-                                <li class="list-group-item d-flex justify-content-between align-items-center tweet-text-item">
+                                <li
+                                    class="list-group-item d-flex justify-content-between align-items-center tweet-text-item">
                                     {{ tweet.text }}
                                 </li>
                                 {% endfor %}
