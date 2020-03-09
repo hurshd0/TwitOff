@@ -4,13 +4,11 @@ $(document).ready(() => {
         Function called on form submission when comparing users and who
         is more likely to make a tweet.
     */
-    $("#compare_form").submit((e) => {
-        e.preventDefault(); //prevent default action
+    $("#compare_form-button").click(() => {
 
-        const user1 = $(this.user1).val();
-        const user2 = $(this.user2).val();
+        const user1 = $("#compare_form select[name='user1']").val();
+        const user2 = $("#compare_form select[name='user2']").val()
         let error_msg = '';
-
         // form message container
         const compare_result = $(".compare-result");
 
@@ -37,9 +35,9 @@ $(document).ready(() => {
         }
         else {
 
-            const post_url = $(this).attr("action"); //get form action url
-            const request_method = $(this).attr("method"); //get form GET/POST method
-            const tweet_text = $(this.tweet_text).val();
+            const post_url = "/compare"
+            const request_method = "POST"; //get form GET/POST method
+            const tweet_text = $("#compare_form textarea[name=tweet_text]").val();
             const post_data = JSON.stringify({
                 "user1": user1,
                 "user2": user2,
@@ -69,9 +67,10 @@ $(document).ready(() => {
     /*
         Add a new twitter user to the app
     */
-    $("#add-user-form").submit((e) => {
-        e.preventDefault(); //prevent default action
-        let username = $(this.username).val();
+    $("#add-user-form-btn").click((event) => {
+
+        let username = $("#add-user-form input").val();
+
         if (username[0] === "@") {
             username = username.slice(1);
         }
