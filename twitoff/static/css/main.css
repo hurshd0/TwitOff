@@ -95,5 +95,17 @@ footer {
 
 .footer-holder {
     padding: 2.25rem 1.25rem;
+}
+
+.footer-logo {
+margin-top: 0.25rem;
+}
+
+.footer-social-icons a {
+    color: rgb(226, 236, 235);
+}
+
+.footer-social-icons {
+    font-size: 3rem;
 
 }
