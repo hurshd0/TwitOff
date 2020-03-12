@@ -3,6 +3,14 @@
 
 ---
 
+### Demo
+
+![showing how twitoff works](https://i.imgur.com/GDFZOlq.gif)
+
+### Architecture
+
+![front end, back end architecture of twitoff](media/twitoff_arch.png)
+
 ### Deployed App
 
 👉 [TwitOff](http://twitoff.com/)
