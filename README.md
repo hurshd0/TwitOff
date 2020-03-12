@@ -5,7 +5,7 @@
 
 ### Demo
 
-![showing how twitoff works](https://i.imgur.com/GDFZOlq.gif)
+![showing how twitoff works](media/demo.gif)
 
 ### Architecture
 
