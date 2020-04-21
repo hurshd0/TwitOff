@@ -32,10 +32,12 @@
 7. Navigate to `httpL//localhost:5000` on your browser, and have fun! 🥳
 
 
-### Acknowledgements
+### Acknowledgements & Credits
 
 | [Kyle Guerrero](https://github.com/AceMouty)     |
 | :--------------------: |
 | <img src="https://avatars0.githubusercontent.com/u/45374681?s=400&v=4" width = "200" />                   |
 | Front End Engineer |
 | [<img src="https://github.com/favicon.ico" width="20"> ](https://github.com/AceMouty) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="20"> ](https://www.linkedin.com/in/kyle-g-a7b7a0b6/)                   |
+
+This app was inspired from Aaron Gallant's original idea. He is Lambda School Instructor who taught DS1, repo is found here: https://github.com/soycode/twitoff
