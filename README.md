@@ -3,6 +3,8 @@
 
 ---
 
+Code is [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ### Demo
 
 ![showing how twitoff works](media/demo.gif)
@@ -32,7 +34,7 @@
 7. Navigate to `httpL//localhost:5000` on your browser, and have fun! 🥳
 
 
-### Acknowledgements & Credits
+### Acknowledgements
 
 | [Kyle Guerrero](https://github.com/AceMouty)     |
 | :--------------------: |
@@ -40,4 +42,7 @@
 | Front End Engineer |
 | [<img src="https://github.com/favicon.ico" width="20"> ](https://github.com/AceMouty) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="20"> ](https://www.linkedin.com/in/kyle-g-a7b7a0b6/)                   |
 
+### Credits
+
 This app was inspired from Aaron Gallant's original idea. He is Lambda School Instructor who taught DS1, repo is found here: https://github.com/soycode/twitoff
+
