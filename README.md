@@ -44,5 +44,11 @@ Code is [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](h
 
 ### Credits
 
-This app was inspired from Aaron Gallant's original idea. He is Lambda School Instructor who taught DS1, repo is found here: https://github.com/soycode/twitoff
+This app was developed based on [curriculum](https://github.com/LambdaSchool/DS-Unit-3-Sprint-3-Productization-and-Cloud) from Lambda School, but it has major modifictations like:
+
+
+- L2 model for improved predictions
+- Responsive design via Bootstrap
+- JQuery  
+- Using Flask Alembic for easy db migrations
 

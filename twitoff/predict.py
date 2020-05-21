@@ -16,7 +16,7 @@ def predict_user(user1_name, user2_name, tweet_text, cache=None):
     user2_labels = np.zeros(len(user2.tweets))
     embeddings = np.vstack([user1_embeddings, user2_embeddings])
     labels = np.concatenate([user1_labels, user2_labels])
-    log_reg = LogisticRegression(solver='lbfgs', max_iter=1000)
+    log_reg = LogisticRegression(solver="lbfgs", max_iter=1000)
     log_reg.fit(embeddings, labels)
-    tweet_embedding = BASILICA.embed_sentence(tweet_text, model='twitter')
+    tweet_embedding = BASILICA.embed_sentence(tweet_text, model="twitter")
     return log_reg.predict_proba(np.array([tweet_embedding]))[:, 1]
