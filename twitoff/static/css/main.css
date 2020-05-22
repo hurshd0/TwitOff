@@ -91,8 +91,34 @@
 
 footer {
     background-color: #1b212c;
-
+    
 }
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+/* unvisited link */
+a:link {
+  color: #dfdfdf;
+}
+
+a:hover {
+  color: #00cc99;
+}
+
 
 .footer-holder {
     padding: 2.25rem 1.25rem;
