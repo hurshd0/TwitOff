@@ -4,7 +4,7 @@
 <head>
 
     <!-- Favicons-->
-    <link href="/static/favicon.ico" rel="icon">
+    <link href="{{ url_for('static', filename='favicon.ico')}}" rel="shortcut icon">
 
     <!-- Meta tags-->
     <meta charset="UTF-8">
@@ -52,7 +52,8 @@
             <nav class="navbar navbar-expand-md navbar-light bg-light">
                 <!-- Brand logo-->
                 <a href="/" class="navbar-brand">
-                    <img src="/static/img/logo.png" width=60 height=60 lass="d-inline-block align-top" alt="" />
+                    <img src="{{ url_for('static', filename='img/logo.png')}}" width=60 height=60
+                        lass="d-inline-block align-top" alt="" />
                 </a>
                 <ul class="nav navbar-nav ml-auto">
                     <!-- Update tweets -->

@@ -93,29 +93,28 @@ footer {
     background-color: #1b212c;
     
 }
-
-a:link {
+.footer-copyright a:link {
   text-decoration: none;
 }
 
-a:visited {
+.footer-copyright a:visited {
   text-decoration: none;
 }
 
-a:hover {
+.footer-copyright a:hover {
   text-decoration: underline;
 }
 
-a:active {
+.footer-copyright a:active {
   text-decoration: underline;
 }
 
 /* unvisited link */
-a:link {
+.footer-copyright a:link {
   color: #dfdfdf;
 }
 
-a:hover {
+.footer-copyright a:hover {
   color: #00cc99;
 }
 
