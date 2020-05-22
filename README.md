@@ -3,7 +3,7 @@
 
 ---
 
-Code is [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Demo
 
@@ -15,7 +15,7 @@ Code is [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](h
 
 ### Deployed App
 
-👉 [TwitOff](http://twitoff.com/)
+👉 [TwitOff](https://twitoff.com/)
 
 ### Usage if running local
 
